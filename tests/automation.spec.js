@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test.only('Login to automation practice shopping website ', async ({ page }) => {
+test('Login to automation practice shopping website ', async ({ page }) => {
 
     await page.goto('/');
     await expect(page.getByRole('link', { name: 'Home' })).toBeVisible();
