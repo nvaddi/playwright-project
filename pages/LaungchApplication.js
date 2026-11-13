@@ -13,8 +13,14 @@ export class LaunchApplication {
      * 
      */
     async launchApplicationURL() {
+
+        const url = process.env.AUTOMATION_EXRC_URL;
+        if (!url) {
+            throw new Error('AUTOMATION_EXRC_URL is not set');
+        }
+        
         test.info('Launching application: ');
-        await this.page.goto('https://automationexercise.com/');
+        await this.page.goto(url);
         test.info('application lauched succesfully');
 
         //Verifying the navigation
