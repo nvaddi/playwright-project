@@ -8,11 +8,11 @@ on:
         required: true
         type: string
         default: ubuntu-latest
-      labels:
-        description: 'Playwright tags to run, comma-separated (for example: @smoke,@regression)'
-        required: false
-        type: string
-        default: '@smoke,@regression'
+      # labels:
+      #   description: 'Playwright tags to run, comma-separated (for example: @smoke,@regression)'
+      #   required: false
+      #   type: string
+      #   default: '@smoke,@regression'
 
 jobs:
   test:
