@@ -14,7 +14,7 @@ export class LaunchApplication {
      */
     async launchApplicationURL() {
         test.info('Launching application: ');
-        await this.page.goto('/');
+        await this.page.goto('https://automationexercise.com/');
         test.info('application lauched succesfully');
 
         //Verifying the navigation
