@@ -4,37 +4,48 @@ on:
   workflow_dispatch:
     inputs:
       runner:
-        description: 'Runner label to use (for example: ubuntu-latest)'
+        description: "Runner label to use"
         required: true
         type: string
         default: ubuntu-latest
-      # labels:
-      #   description: 'Playwright tags to run, comma-separated (for example: @smoke,@regression)'
-      #   required: false
-      #   type: string
-      #   default: '@smoke,@regression'
+      labels:
+        description: "Playwright tags to run, comma-separated (optional)"
+        required: false
+        type: string
+        default: ""
 
 jobs:
   test:
+    name: Playwright Test Run
     runs-on: ${{ inputs.runner }}
+    timeout-minutes: 30
+
     env:
+      # Map GitHub Actions variable to environment variable in the runner
       AUTOMATION_EXRC_URL: ${{ vars.AUTOMATION_EXRC_URL }}
+      CI: true
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: npm
 
-      - run: npm ci
-      - run: npx playwright install --with-deps chromium
+      - name: Install dependencies
+        run: npm ci
 
-      - name: Run Playwright tests for selected labels
+      - name: Install Playwright browser
+        run: npx playwright install --with-deps chromium
+
+      - name: Run Playwright tests
         env:
           PLAYWRIGHT_LABELS: ${{ inputs.labels }}
         run: |
-          if [ -z "$PLAYWRIGHT_LABELS" ]; then
+          if [ -z "${PLAYWRIGHT_LABELS}" ]; then
             npx playwright test
           else
             grep_pattern="${PLAYWRIGHT_LABELS//,/|}"
