@@ -14,7 +14,7 @@ export class LaunchApplication {
      */
     async launchApplicationURL() {
 
-        const url = process.env.AUTOMATION_EXRC_URL;
+       const url = process.env.AUTOMATION_EXRC_URL || 'https://www.automationexercise.com/';
         if (!url) {
             throw new Error('AUTOMATION_EXRC_URL is not set');
         }
