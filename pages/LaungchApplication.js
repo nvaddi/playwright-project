@@ -7,6 +7,11 @@ export class LaunchApplication {
         this.verifyHomeButton = page.getByRole('link', { name: 'Home' });
     }
 
+    /**
+     * @author: Niranjan Vaddi
+     * Launching the application URL on browser
+     * 
+     */
     async launchApplicationURL() {
         test.info('Launching application: ');
         await this.page.goto('/');

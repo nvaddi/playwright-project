@@ -10,6 +10,11 @@ export class CheckoutPage {
         this.placeOrderButton = page.getByRole('link', { name: 'Place Order' });
     }
 
+    /**
+     * @author: Niranjan Vaddi
+     * checkoutAndPlaceOrder() method will checkout and order will be placed
+     * 
+     */
     async checkoutAndPlaceOrder() {
         await this.checkoutButton.click();
         test.info('Checkout button clicked');

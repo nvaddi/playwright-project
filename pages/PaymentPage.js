@@ -15,6 +15,10 @@ export class PaymentPage {
         this.message = page.getByText('Order Placed!');
     }
 
+    /**
+     * @author: Niranjan Vaddi
+     * Making the payment
+     */
     async paymentAndConfirmOrder() {
         await this.cardHolderName.fill(cards.cardAxis.cardHolderName);
         await this.cardNumber.fill(cards.cardAxis.cardNumber);

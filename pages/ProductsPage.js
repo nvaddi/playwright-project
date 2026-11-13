@@ -7,7 +7,11 @@ export class ProductsPage {
         //Locators
         this.products = page.getByRole('link', { name: 'Products' });
     }
-
+/**
+ * @author: Niranjan Vaddi
+ * Navigating to the products to shop
+ *
+ */
     async navigateToProducts() {
         await this.products.click();
     }

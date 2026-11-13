@@ -17,7 +17,11 @@ export class CartPage {
         this.viewCartItems = page.getByRole('link', { name: 'View Cart' });
 
     }
-
+/**
+ * @author: Niranjan Vaddi
+ * addItemToCart() method will add items to cart
+ * 
+ */
     async addItemToCart() {
 
         //Adding item1 to product

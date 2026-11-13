@@ -4,6 +4,7 @@ export class LoginPage {
     constructor(page) {
         this.page = page;
 
+        //Locators
         this.loginOrSignup = page.getByRole('link', { name: ' Signup / Login' });
         this.userNameTextField = page.locator('form').filter({ hasText: 'Login' }).getByPlaceholder('Email Address');
         this.passwordTextField = page.getByRole('textbox', { name: 'Password' });
@@ -13,6 +14,11 @@ export class LoginPage {
 
     }
 
+    /**
+     * @author: Niranjan Vaddi
+     * Logging into the application
+     * 
+     */
     async loginToApplication() {
         await this.loginOrSignup.click();
         await this.userNameTextField.fill(users.standardUser.username);
